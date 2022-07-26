@@ -1,12 +1,16 @@
 import path from 'path'
 import fs from 'fs'
 import express from 'express'
-import mongoose from 'mongoose'
+import {monmodel} from './db/index'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import cors from 'cors'
+import dotenv  from "dotenv"
 
-const PORT = 8000;
+
+dotenv.config()
+
+const PORT = process.env.PORT
 const app = express();
 
 
@@ -16,19 +20,7 @@ app.use(express.static('public'));
 app.use(express.static('./build'));
 
 
-const dbURI = 'mongodb+srv://Charles-Eguale:14032001BIRTH@cluster0.hs0dw.mongodb.net/serokell?retryWrites=true&w=majority'
-const database: any = mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
-.then(() => console.log('database connected'))
-.catch((err) => console.log('check for error', err))
 
-
-const schema = {
-  name: String,
-  email: String,
-  feedback: String
-}
-
-const monmodel = mongoose.model('message', schema as any)
 
 app.post('/feedback',  async (req: any, res: any) => {
   try {
@@ -41,8 +33,8 @@ app.post('/feedback',  async (req: any, res: any) => {
             await data.save().then(() => {
             console.log('feedback saved to database')
           })
-          console.log(req.body.input) 
-          res.status(200, 'OK')
+            console.log(req.body.input) 
+            res.status(200, 'OK')
 
       } catch (error) { 
               console.log(error)
@@ -66,7 +58,7 @@ app.listen(PORT, () => {
 
 
 // app.get('/', (req, res) => {
-//   const app = ReactDOMServer.renderToString(<App />);
+//   const landingpage = ReactDOMServer.renderToString(<App />);
 //   const indexFile = path.resolve('./build/index.html');
 
 //   fs.readFile(indexFile, 'utf8', (err, data) => {
@@ -76,7 +68,7 @@ app.listen(PORT, () => {
 //     }
 
 //     return res.send(
-//       data.replace('<div id="root"></div>', `<div id="root">${app}</div>`)
+//       data.replace('<div id="root"></div>', `<div id="root">${landingpage}</div>`)
 //     );
 //   });
 // });
