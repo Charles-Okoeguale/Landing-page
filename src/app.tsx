@@ -6,7 +6,6 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import cors from 'cors'
 
-
 const PORT = 8000;
 const app = express();
 
@@ -16,28 +15,45 @@ app.use(cors())
 app.use(express.static('public'));
 app.use(express.static('./build'));
 
-const dbURI = 'mongodb+srv://Charles-Eguale:14032001BIRTH@cluster0.hs0dw.mongodb.net/?retryWrites=true&w=majority'
-mongoose.connect(dbURI)
-  .then(() => console.log('database connection started'))
-  .catch((error : Error) => console.log( error, 'database failed to connect'));
 
-app.post('/feedback', (req: any, res: any) => {
+const dbURI = 'mongodb+srv://Charles-Eguale:14032001BIRTH@cluster0.hs0dw.mongodb.net/serokell?retryWrites=true&w=majority'
+const database: any = mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => console.log('database connected'))
+.catch((err) => console.log('check for error', err))
 
+
+const schema = {
+  name: String,
+  email: String,
+  feedback: String
+}
+
+const monmodel = mongoose.model('message', schema as any)
+
+app.post('/feedback',  async (req: any, res: any) => {
   try {
-      console.log(req.body.input)
-      res.status(200, 'OK')
-  } catch (error) { 
-      console.log(error)
-      res.status(501)
-  }
+          const data = new monmodel({
+            name: req.body.input.name,
+            email: req.body.input.email,
+            feedback: req.body.input.feedback
+          })
+           
+            await data.save().then(() => {
+            console.log('feedback saved to database')
+          })
+          console.log(req.body.input) 
+          res.status(200, 'OK')
+
+      } catch (error) { 
+              console.log(error)
+              res.status(501)
+      }
 })
 
 
 app.listen(PORT, () => {
   console.log(`server listening on Port ${PORT}`)
 })
-
-
 
 
 
