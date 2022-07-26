@@ -1,22 +1,52 @@
-const path = require('path')
-const fs = require('fs')
-const express = require('express');
-const mongoose = require('mongoose');
-const React = require('react')
-const ReactDOMServer = require('react-dom/server')
+import path from 'path'
+import fs from 'fs'
+import express from 'express'
+import mongoose from 'mongoose'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import cors from 'cors'
 
 
 const PORT = 8000;
 const app = express();
 
+
 app.use(express.json());
+app.use(cors())
 app.use(express.static('public'));
 app.use(express.static('./build'));
 
 const dbURI = 'mongodb+srv://Charles-Eguale:14032001BIRTH@cluster0.hs0dw.mongodb.net/?retryWrites=true&w=majority'
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => app.listen(PORT, () => { console.log(`Listening on port ${PORT}`)}))
+mongoose.connect(dbURI)
+  .then(() => console.log('database connection started'))
   .catch((error : Error) => console.log( error, 'database failed to connect'));
+
+app.post('/feedback', (req: any, res: any) => {
+
+  try {
+      console.log(req.body.input)
+      res.status(200, 'OK')
+  } catch (error) { 
+      console.log(error)
+      res.status(501)
+  }
+})
+
+
+app.listen(PORT, () => {
+  console.log(`server listening on Port ${PORT}`)
+})
+
+
+
+
+
+
+
+
+
+
+
 
 
 // app.get('/', (req, res) => {
