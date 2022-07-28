@@ -1,7 +1,11 @@
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 
-const dbURI = 'mongodb+srv://Charles-Eguale:14032001BIRTH@cluster0.hs0dw.mongodb.net/serokell?retryWrites=true&w=majority'
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
+dotenv.config()
+
+const mongodbURL = 'mongodb+srv://Charles-Eguale:14032001BIRTH@cluster0.hs0dw.mongodb.net/serokell?retryWrites=true&w=majority'
+
+mongoose.connect(mongodbURL, { useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => console.log('database connected'))
 .catch((err) => console.log('check for error', err))
 

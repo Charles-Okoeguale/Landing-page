@@ -21,25 +21,24 @@ app.use(express.static('./build'));
 
 
 
-
 app.post('/feedback',  async (req: any, res: any) => {
   try {
-          const data = new monmodel({
-            name: req.body.input.name,
-            email: req.body.input.email,
-            feedback: req.body.input.feedback
-          })
+        const data = new monmodel({
+          name: req.body.input.name,
+          email: req.body.input.email,
+          feedback: req.body.input.feedback
+        })
            
-            await data.save().then(() => {
-            console.log('feedback saved to database')
-          })
+          // await data.save().then(() => {
+          // console.log('feedback saved to database')
+          // })
             console.log(req.body.input) 
             res.status(200, 'OK')
 
-      } catch (error) { 
-              console.log(error)
-              res.status(501)
-      }
+        } catch (error) { 
+                console.log(error)
+                res.status(501)
+          }
 })
 
 
