@@ -1,0 +1,67 @@
+@import "../Variables/Variables.scss";
+
+.intro {
+    background: linear-gradient(to right bottom, rgba(252, 104, 18, 0.507),rgba(252, 96, 69, 0.363)), url(../../assets/main.png);
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+
+    &__content {
+        margin: 12rem;
+        text-align: center;
+    }
+
+    &__text {
+        font-size: 6rem;
+        color: $main-color;
+        text-shadow: 3px 3px 3px;
+    }
+
+    &__contact {
+        background: none;
+        padding: 10px 2rem;
+        border-radius: 20px;
+        color: $main-color;
+        cursor: pointer;
+        font-weight: bolder;
+        border: 1px solid $main-color;
+        font-size: 15px;
+        margin-top: 1rem;
+
+        &:hover {
+            transform: scale(140%);
+            transition: 1s ease-in-out;
+            color: $secondary-color;
+            background: $main-color;
+        }
+    }
+
+    @media screen and (max-width: 620px) {
+        .intro { 
+           background-position: center center;
+           background-size: cover;
+        }    
+
+        &__content {
+            margin: 0.5rem;
+            text-align: center;
+        }
+
+        &__contact {
+            background: $main-color;
+            border-radius: 20px;
+            color: $secondary-color;
+            cursor: pointer;
+            font-weight: bolder;
+            border: 1px solid $main-color;
+            font-size: 10px;
+        }
+
+        &__text {
+            font-size: 4rem;
+            color: $main-color;
+        }
+    }
+
+}
+

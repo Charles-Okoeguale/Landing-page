@@ -1,6 +1,5 @@
 
-
-# - Surge 👕
+# - Surge 👕👗
 
 The landing page for an online store.
 
@@ -12,12 +11,6 @@ The landing page for an online store.
 | Backend API | Application server   | Typescript, Express           |
 | Mongodb     | Database             |                               |
 
-
-## Running the Client locally
-
-- Go to client folder `cd client`
-- Run `yarn install`
-- Run `yarn start`
 
 ## Running the Server locally
 

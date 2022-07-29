@@ -1,0 +1,139 @@
+@import "../Variables/Variables.scss";
+
+.contact {
+    background: linear-gradient(to right bottom, rgba(111, 108, 107, 0.507),rgba(252, 96, 69, 0.363)),url(../../assets/contact.png);
+    background-size: cover;
+    &__text {
+        text-align: center;
+        color: $main-color;
+        font-family: $font-roboto;
+        font-size: 2rem;
+        text-shadow: 3px 3px 3px;
+    }
+
+    &__form {
+        display: grid;
+        width: 40%;
+        height: 50%;
+        margin: auto;
+        border: 3px solid white;
+        background-color: $main-color;
+        border-radius: 1em;
+    }
+
+
+    &__button {
+        height: 40px;
+        margin: 1vh auto;
+        width: 200px;
+        background-color: $orange-section;
+        border-radius: 10px;
+        font-family: $font-roboto;
+        font-weight: bold;
+    }
+
+    &__textarea {
+        margin: 1vh auto;
+        padding: 0.5em;
+        border-radius: 10px;
+        width: 90%;
+        height: 10em;
+        font-size: 16px;
+    }
+
+    &__input {
+        margin: 15px auto;
+        padding: 0.5em;
+        border-radius: 10px;
+        width: 90%;
+        height: 3em;
+        font-size: 16px;
+    }
+
+    @media screen and (max-width: 620px) {
+
+    &__text {
+        color: $main-color;
+        font-family: $font-roboto;
+        font-size: 10px;
+        text-shadow: none;
+        font-weight: bold;
+    }
+
+    &__form {
+        width: 100vw;
+        height: 50%;
+        border: 3px solid white;
+        background-color: $main-color;
+    }
+
+    &__button {
+        height: 40px;
+        width: 70vw;
+        background-color: $orange-section;
+        border-radius: 10px;
+        font-family: $font-roboto;
+        font-weight: bold;
+    }
+
+    &__textarea {
+        margin: 1vh auto;
+        padding: 0.5em;
+        border-radius: 10px;
+        width: 70vw;
+        height: 10em;
+        font-size: 16px;
+    }
+
+    &__input {
+        border-radius: 10px;
+        width: 70vw;
+        height: 3em;
+        font-size: 16px;
+    }
+    }
+
+    @media screen and (max-width: 480px) {
+
+        &__text {
+            color: $main-color;
+            font-family: $font-roboto;
+            font-size: 10px;
+            text-shadow: none;
+            font-weight: bold;
+        }
+    
+        &__form {
+            width: 80vw;
+            height: 30%;
+            border: 3px solid white;
+            background-color: $main-color;
+        }
+    
+        &__button {
+            height: 40px;
+            width: 70vw;
+            background-color: $orange-section;
+            border-radius: 10px;
+            font-family: $font-roboto;
+            font-weight: bold;
+        }
+    
+        &__textarea {
+            margin: 1vh auto;
+            padding: 0.5em;
+            border-radius: 10px;
+            width: 70vw;
+            height: 3em;
+            font-size: 16px;
+        }
+    
+        &__input {
+            border-radius: 10px;
+            width: 70vw;
+            height: 1em;
+            font-size: 16px;
+        }
+        }
+}
+

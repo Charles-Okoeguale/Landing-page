@@ -1,0 +1,85 @@
+@import "../Variables/Variables.scss";
+
+.footer {
+    width: 100%;
+    height: 100%;
+    background-color: $lightgray-color;
+    display: block;
+    justify-content: space-between;
+
+    &__links {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__personal {
+        display: flex;
+        padding: 1em;
+        color: $secondary-color;
+    }
+
+    &__text {
+        padding: 1em;
+        display: grid;
+        font-family: $font-roboto;
+    }
+
+    &__span {
+        padding: 1em;
+    }
+
+    &__information {
+
+        display: flex;
+        padding: 1em;
+        color: $secondary-color;
+
+    }
+
+    &__copywright {
+        width: 100%;
+        height: 10vh;
+    }  
+
+    &__copywright {
+        text-align: center;
+        margin: auto;
+        font-family: $font-roboto;
+    }
+
+    &__copywright {
+        width: 60%;
+        color: $secondary-color;
+    }
+
+    @media screen and (max-width: 620px) {
+
+    &__links {
+        width: 100%;
+        display: flex;
+    }
+
+    &__personal {
+        padding: 1em;
+        color: $secondary-color;
+    }
+
+    &__text {
+        padding: 0;
+        font-family: $font-roboto;
+        font-size: 10px;
+    }
+
+    &__information {
+        display: flex;
+        padding: 1em;
+        color: $secondary-color;
+    }
+
+    &__copywright {
+        display: none;
+    }  
+    }
+  }
+
